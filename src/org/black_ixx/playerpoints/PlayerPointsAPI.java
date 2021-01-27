@@ -28,7 +28,7 @@ public class PlayerPointsAPI {
      * 
      * @param playerId
      *            UUID of player
-     * @param Amount
+     * @param amount
      *            of points to give
      * @return True if we successfully adjusted points, else false
      */
@@ -52,6 +52,7 @@ public class PlayerPointsAPI {
     public boolean give(String playerName, int amount) {
     	boolean success = false;
     	if(playerName != null) {
+    	    // todo: uuid转换方法使用mojangAPI,对于统一通行证或类似的外置登录方法不能使用.
     		success = give(plugin.translateNameToUUID(playerName), amount);
     	}
     	return success;
@@ -63,7 +64,7 @@ public class PlayerPointsAPI {
      * 
      * @param playerId
      *            UUID of player
-     * @param Amount
+     * @param amount
      *            of points to give
      * @return True if we successfully adjusted points, else false
      */
@@ -142,7 +143,7 @@ public class PlayerPointsAPI {
      * 
      * @param playerId
      *            UUID of player
-     * @param Amount
+     * @param amount
      *            of points that it should be set to
      * @return True if successful
      */
@@ -173,8 +174,8 @@ public class PlayerPointsAPI {
     /**
      * Reset a player's points by removing their entry from the config.
      * 
-     * @param Name
-     *            of player
+     * @param playerId
+     *            UUID of player
      * @return True if successful
      */
     public boolean reset(UUID playerId) {
